@@ -9,3 +9,17 @@ $(".delete-link").click(function(e){
 	});
 });
 
+$(".edit-form").submit(function(e){
+	e.preventDefault();
+	$.ajax({
+		method: "PUT",
+		url: $(this).attr("action"),
+		data: {
+			name: $("#new-name").val(),
+			members: $("#members").val()
+		}
+	}).done(function(response){
+		window.location.href= "/teams";
+		console.log("promise kept");
+	})
+})
